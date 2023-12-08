@@ -1,4 +1,4 @@
-import React, {Dispatch, Ref, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import {
   View,
   Text,

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View} from 'react-native';
 import {data} from '../../data/data';
 import Cell from '../cell';
 
-const TableHeader = () => {
+const TableHeader = memo(() => {
   const tableColObj = data.slice(0, 1);
   const tableCol = ['#', ...Object.keys(tableColObj[0])];
 
@@ -12,6 +12,7 @@ const TableHeader = () => {
       {tableCol.map((element: any, colItemIndex) => (
         <Cell
           element={element}
+          index={-1}
           key={`tableHeader-${colItemIndex}`}
           viewStyle={{backgroundColor: 'lightGrey'}}
           textStyle={{fontSize: 16, fontWeight: '700'}}
@@ -19,6 +20,6 @@ const TableHeader = () => {
       ))}
     </View>
   );
-};
+});
 
 export default TableHeader;
