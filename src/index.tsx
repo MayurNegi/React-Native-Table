@@ -1,16 +1,14 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, Text} from 'react-native';
-import Column from './features/column';
+import {SafeAreaView, Text} from 'react-native';
+import Table from './features/table';
 
 export default function AppWrapper(): React.JSX.Element {
   return (
-    <SafeAreaView>
-      <Text>Hi</Text>
-      <ScrollView>
-        {/* column */}
-        <Column />
-        {/* next, back button and page offset */}
-      </ScrollView>
+    <SafeAreaView style={{flex: 1}}>
+      {/* column */}
+      <Text>Hii</Text>
+      <Table />
+      {/* next, back button and page offset */}
     </SafeAreaView>
   );
 }

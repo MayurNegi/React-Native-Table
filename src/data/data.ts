@@ -1,4 +1,4 @@
-const data = [
+export const data = [
 	{
 	  "ACT Symbol": "A",
 	  "Company Name": "Agilent Technologies, Inc. Common Stock",
