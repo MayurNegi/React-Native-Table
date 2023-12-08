@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useReducer, useRef, useState} from 'react';
 import {data} from '../../data/data';
 import {
   FlatList,
@@ -15,6 +15,7 @@ const PAGE_LENGTH = 25;
 
 const Table = () => {
   const [table, setTable] = useState(data.slice(0, PAGE_LENGTH));
+  const [, update] = useReducer((x: number) => x + 1, 0);
   let pageNumberRef = useRef(0);
 
   const handleNext = () => {
@@ -33,6 +34,16 @@ const Table = () => {
     pageNumberRef.current = newPageIndex;
     const firstElementIndex = newPageIndex * PAGE_LENGTH;
     setTable(data.slice(firstElementIndex, firstElementIndex + PAGE_LENGTH));
+  };
+
+  const handleValuesUpdate = (values: string[], colIndex: number) => {
+    let keys = Object.keys(table[colIndex]);
+    let newObj = {};
+    for (let i = 1; i < keys.length; i++) {
+      newObj[keys[i]] = values[i];
+    }
+    table[colIndex] = newObj;
+    update();
   };
 
   return (
@@ -62,7 +73,13 @@ const Table = () => {
             data={table}
             style={{marginHorizontal: 16}}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item, index}) => <Column item={item} index={index} />}
+            renderItem={({item, index}) => (
+              <Column
+                item={item}
+                index={index}
+                handleValuesUpdate={handleValuesUpdate}
+              />
+            )}
           />
         </View>
       </ScrollView>

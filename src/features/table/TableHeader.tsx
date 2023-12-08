@@ -5,7 +5,7 @@ import Cell from '../cell';
 
 const TableHeader = () => {
   const tableColObj = data.slice(0, 1);
-  const tableCol = Object.keys(tableColObj[0]);
+  const tableCol = ['#', ...Object.keys(tableColObj[0])];
 
   return (
     <View style={{display: 'flex', flexDirection: 'row', marginHorizontal: 16}}>
